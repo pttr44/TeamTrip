@@ -1,5 +1,5 @@
 package PaqueteVO;
 
-public class Eventos {
+public class Evento {
     
 }
