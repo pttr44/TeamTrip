@@ -23,4 +23,10 @@ public class Viaje_evento {
     public void setId_evento(int id_evento) {
         this.id_evento = id_evento;
     }
+
+    @Override
+    public String toString() {
+        return "Viaje_evento [id_viaje=" + id_viaje + ", id_evento=" + id_evento + "]";
+    }
+    
 }
