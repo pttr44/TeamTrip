@@ -1,17 +1,17 @@
 package PaqueteVO;
 
 public class Lugar {
-    private int id_lugar;
+    private String id_lugar;
 
-    public Lugar(int id_lugar) {
+    public Lugar(String id_lugar) {
         this.id_lugar = id_lugar;
     }
 
-    public int getId_lugar() {
+    public String getId_lugar() {
         return id_lugar;
     }
 
-    public void setId_lugar(int id_lugar) {
+    public void setId_lugar(String id_lugar) {
         this.id_lugar = id_lugar;
     }
 
