@@ -1,5 +1,5 @@
 package PaqueteDAO;
 
-public class EventosDAO {
+public class LugarDAO {
     
 }

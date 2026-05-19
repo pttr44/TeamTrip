@@ -1,5 +1,5 @@
 package PaqueteVO;
 
-public class Lugares {
+public class Grupo_viaje {
     
 }
