@@ -26,4 +26,10 @@ public class Evento {
     public void setFecha_hora(LocalDateTime fecha_hora) {
         this.fecha_hora = fecha_hora;
     }
+
+    @Override
+    public String toString() {
+        return "Evento [id_evento=" + id_evento + ", fecha_hora=" + fecha_hora + "]";
+    }
+
 }
