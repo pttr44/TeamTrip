@@ -24,4 +24,9 @@ public class Precio {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    @Override
+    public String toString() {
+        return "Precio [id_precio=" + id_precio + ", valor=" + valor + "]";
+    }
 }
