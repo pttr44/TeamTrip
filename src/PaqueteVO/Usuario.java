@@ -2,21 +2,21 @@ package PaqueteVO;
 
 public class Usuario {
     
-    private int dni;
+    private String dni;
     private String nombre_completo;
     private String tipo_user;
 
-    public Usuario(int dni, String nombre_completo, String tipo_user){
+    public Usuario(String dni, String nombre_completo, String tipo_user){
         this.dni = dni;
         this.nombre_completo = nombre_completo;
         this.tipo_user = tipo_user;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public void setDni(int dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
