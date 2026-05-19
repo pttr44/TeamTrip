@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 
 public class PropuestaDAO {
     
-    public void insertarPropuesta(Propuesta propuesta, Connection conexion) {
+    public static void insertarPropuesta(Propuesta propuesta, Connection conexion) {
         
         String consulta = "INSERT INTO propuesta (id_Propuesta, propuesta) VALUES (?, ?)";
 
@@ -24,7 +24,7 @@ public class PropuestaDAO {
         }
     }
 
-    public void eliminarPropuesta(int id_Propuesta, Connection conexion) {
+    public static void eliminarPropuesta(int id_Propuesta, Connection conexion) {
         String consulta = "DELETE FROM propuesta WHERE id_Propuesta = ?";
     
         try (PreparedStatement ps = conexion.prepareStatement(consulta)) {
@@ -39,7 +39,7 @@ public class PropuestaDAO {
         }
     }
 
-    public void modificarPropuesta(Propuesta propuesta, Connection conexion) {
+    public static void modificarPropuesta(Propuesta propuesta, Connection conexion) {
         String consulta = "UPDATE propuesta SET propuesta = ? WHERE id_Propuesta = ?";
     
         try (PreparedStatement ps = conexion.prepareStatement(consulta)) {
@@ -55,7 +55,7 @@ public class PropuestaDAO {
         }
     }
 
-    public void mostrarPropuesta(int id_Propuesta, Connection conexion) {
+    public static Propuesta mostrarPropuesta(int id_Propuesta, Connection conexion) {
         String consulta = "SELECT * FROM propuesta WHERE id_Propuesta = ?";
     
         try (PreparedStatement ps = conexion.prepareStatement(consulta)) {
@@ -64,15 +64,16 @@ public class PropuestaDAO {
             
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    System.out.println("ID: " + rs.getInt("id_Propuesta"));
-                    System.out.println("Propuesta: " + rs.getString("propuesta"));
-                } else {
-                    System.out.println("No se encontró ninguna propuesta con el ID: " + id_Propuesta);
+                    int id = rs.getInt("id_Propuesta");
+                    String propuesta = rs.getString("propuesta");
+                    
+                    return new Propuesta(id, propuesta);
                 }
             }
             
         } catch (Exception e) {
             System.out.println("Error al mostrar la propuesta: " + e.getMessage());
         }
+        return null;
     }
 }
