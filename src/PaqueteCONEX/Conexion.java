@@ -8,7 +8,7 @@ public class Conexion {
         //Vacio por que quiero suponer que va asi
     }
 
-    public Connection getConnection() throws Exception{
+    public static Connection getConnection() throws Exception{
         try {
             
             String url = "jdbc:mysql://localhost:3306/teamtrip";
