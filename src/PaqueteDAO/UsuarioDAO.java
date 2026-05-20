@@ -7,15 +7,15 @@ import java.sql.ResultSet;
 
 public class UsuarioDAO {
     
-    public static void insertarUsuario(Usuario usuario, Connection conexion) {
+    public static void insertarUsuario(String usuario, Connection conexion, String nombre_completo, String tipo_user) {
 
         String consulta = "INSERT INTO usuario (dni, nombre_completo, tipo_user) VALUES (?, ?, ?)";
 
         try (PreparedStatement ps = conexion.prepareStatement(consulta)) {
             
-            ps.setString(1, usuario.getDni());
-            ps.setString(2, usuario.getNombre_completo());
-            ps.setString(3, usuario.getTipo_user());
+            ps.setString(1, usuario);
+            ps.setString(2, nombre_completo);
+            ps.setString(3, tipo_user);
             
             ps.executeUpdate();
             System.out.println("Usuario insertado correctamente.");
@@ -40,13 +40,13 @@ public class UsuarioDAO {
         }
     }
 
-    public static void modificarUsuario(Usuario usuario, Connection conexion) {
+    public static void modificarUsuario(String dni, Connection conexion, String nuevoNombreCompleto) {
         String consulta = "UPDATE usuario SET nombre_completo = ? WHERE dni = ?";
 
         try (PreparedStatement ps = conexion.prepareStatement(consulta)) {
             
-            ps.setString(1, usuario.getNombre_completo());
-            ps.setString(2, usuario.getDni()); 
+            ps.setString(1, nuevoNombreCompleto);
+            ps.setString(2, dni); 
             
             ps.executeUpdate();
             System.out.println("Usuario modificado correctamente.");
