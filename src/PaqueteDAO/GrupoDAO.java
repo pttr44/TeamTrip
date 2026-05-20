@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
 public class GrupoDAO {
     public static List<String> listVisibles(int id_grupo) {
         List<String> lista = new ArrayList<>();
