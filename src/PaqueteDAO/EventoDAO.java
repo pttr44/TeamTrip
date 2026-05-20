@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-
 public class EventoDAO {
     public static void añadirEvento(Connection conn, LocalDateTime fecha_hora, String nombre) throws SQLException{
         String consulta = "INSERT INTO evento (fecha_hora) VALUES (?)";

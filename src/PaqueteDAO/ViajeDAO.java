@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class ViajeDAO {
-    
+
     public static void añadirViaje(Connection conn, LocalDateTime fecha_inicio, LocalDateTime fecha_final, int id_lugar) throws SQLException{
         String consulta = "INSERT INTO viaje (fecha_inicio, fecha_fin, id_lugar) VALUES (?, ?, ?)";
         try (PreparedStatement ps = conn.prepareStatement(consulta)){

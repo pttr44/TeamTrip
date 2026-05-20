@@ -10,7 +10,7 @@ public class Conexion {
 
     public static Connection getConnection() throws Exception{
         try {
-            
+
             String url = "jdbc:mysql://localhost:3306/teamtrip";
             String user = "root";
             String pwd = "mysql";
