@@ -26,12 +26,12 @@ public class Usuario_grupoDAO {
         return lista;
     }
 
-    public static void añadirUsuarioGrupo(int id_grupo, Usuario usuario, Connection conn){
+    public static void añadirUsuarioGrupo(int id_grupo, String dni, Connection conn){
         String sql = "insert into usuario_grupo values (?, ?)";
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setInt(1, id_grupo);
-                ps.setString(2, usuario.getDni());
+                ps.setString(2, dni);
                 ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
