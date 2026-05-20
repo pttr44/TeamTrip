@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 
 public class UsuarioDAO {
     
-    public void insertarUsuario(Usuario usuario, Connection conexion) {
+    public static void insertarUsuario(Usuario usuario, Connection conexion) {
 
         String consulta = "INSERT INTO usuario (dni, nombre_completo, tipo_user) VALUES (?, ?, ?)";
 
@@ -25,7 +25,7 @@ public class UsuarioDAO {
         }
     }
 
-    public void eliminarUsuario(String dni, Connection conexion) {
+    public static void eliminarUsuario(String dni, Connection conexion) {
         String consulta = "DELETE FROM usuario WHERE dni = ?";
 
         try (PreparedStatement ps = conexion.prepareStatement(consulta)) {
@@ -40,7 +40,7 @@ public class UsuarioDAO {
         }
     }
 
-    public void modificarUsuario(Usuario usuario, Connection conexion) {
+    public static void modificarUsuario(Usuario usuario, Connection conexion) {
         String consulta = "UPDATE usuario SET nombre_completo = ? WHERE dni = ?";
 
         try (PreparedStatement ps = conexion.prepareStatement(consulta)) {
@@ -56,26 +56,25 @@ public class UsuarioDAO {
         }
     }
 
-    public void mostrarUsuario(String dni, Connection conexion) {
+    public Usuario mostrarUsuario(String dniUsuario, Connection conexion) {
         String consulta = "SELECT * FROM usuario WHERE dni = ?";
 
         try (PreparedStatement ps = conexion.prepareStatement(consulta)) {
             
-            ps.setString(1, dni);
+            ps.setString(1, dniUsuario);
             
-            // Ejecutamos la consulta y recorremos el ResultSet
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    System.out.println("DNI: " + rs.getString("dni"));
-                    System.out.println("Nombre Completo: " + rs.getString("nombre_completo"));
-                    System.out.println("Tipo de Usuario: " + rs.getString("tipo_user"));
-                } else {
-                    System.out.println("No se encontró ningún usuario con el DNI: " + dni);
+                    String dni = rs.getString("dni");
+                    String nombre_completo = rs.getString("nombre_completo");
+                    String tipo_user = rs.getString("tipo_user");
+                    return new Usuario(dni, nombre_completo, tipo_user);
                 }
             }
             
         } catch (Exception e) {
             System.out.println("Error al mostrar el usuario: " + e.getMessage());
         }
+        return null; 
     }
 }
