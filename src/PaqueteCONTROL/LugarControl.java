@@ -1,5 +1,5 @@
 package PaqueteCONTROL;
 
-public class UsuarioControl {
+public class LugarControl {
     
 }
