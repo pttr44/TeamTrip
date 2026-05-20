@@ -21,8 +21,11 @@ public class UsuarioControl {
 
     }
 
-    public static void eliminarUsuario(String dni, Connection conexion) {
+    public static void eliminarUsuario(Connection conexion, Scanner scan) {
         Connection conec = conexion;
+
+        System.out.println("Dime el dni del usuario que quieres eliminar: ");
+        String dni = scan.nextLine();
 
         try {
             UsuarioDAO.eliminarUsuario(dni, conec);
@@ -31,8 +34,14 @@ public class UsuarioControl {
         }
     }
 
-    public static void modificarUsuario(String dni, Connection conexion, String nuevoNombreCompleto) {
+    public static void modificarUsuario(Connection conexion, Scanner scan) {
         Connection conec = conexion;
+
+        System.out.println("Dime el dni del usuario que quieres modificar: ");
+        String dni = scan.nextLine();
+
+        System.out.println("Dime el nuevo nombre completo: ");
+        String nuevoNombreCompleto = scan.nextLine();
 
         try {
             UsuarioDAO.modificarUsuario(dni, conec, nuevoNombreCompleto);
