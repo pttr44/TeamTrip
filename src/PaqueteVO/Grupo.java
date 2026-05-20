@@ -29,7 +29,4 @@ public class Grupo {
     public String toString() {
         return "Grupo [id_grupo=" + id_grupo + ", nombre=" + nombre + "]";
     }
-
-    
-
 }
