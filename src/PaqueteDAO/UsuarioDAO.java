@@ -56,7 +56,7 @@ public class UsuarioDAO {
         }
     }
 
-    public Usuario mostrarUsuario(String dniUsuario, Connection conexion) {
+    public static Usuario mostrarUsuario(String dniUsuario, Connection conexion) {
         String consulta = "SELECT * FROM usuario WHERE dni = ?";
 
         try (PreparedStatement ps = conexion.prepareStatement(consulta)) {
@@ -76,5 +76,10 @@ public class UsuarioDAO {
             System.out.println("Error al mostrar el usuario: " + e.getMessage());
         }
         return null; 
+    }
+
+    // Mantiene compatibilidad con usos previos no-estáticos
+    public Usuario mostrarUsuarioInstancia(String dniUsuario, Connection conexion) {
+        return mostrarUsuario(dniUsuario, conexion);
     }
 }

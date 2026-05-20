@@ -5,10 +5,12 @@ import java.time.LocalDateTime;
 public class Evento {
     private int id_evento;
     private LocalDateTime fecha_hora;
+    private String nombre;
 
-    public Evento(LocalDateTime fecha_hora, int id_evento) {
+    public Evento(LocalDateTime fecha_hora, int id_evento, String nombre) {
         this.fecha_hora = fecha_hora;
         this.id_evento = id_evento;
+        this.nombre = nombre;
     }
 
     public int getId_evento() {
@@ -27,9 +29,17 @@ public class Evento {
         this.fecha_hora = fecha_hora;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     @Override
     public String toString() {
-        return "Evento [id_evento=" + id_evento + ", fecha_hora=" + fecha_hora + "]";
+        return "Evento [id_evento=" + id_evento + ", fecha_hora=" + fecha_hora + ", nombre=" + nombre + "]";
     }
 
 }
