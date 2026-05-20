@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Grupo_viajeDAO {
-
     public List<Grupo_viaje> obtenerGruposViaje(Connection conexion, int id_grupo, int id_viaje) {
         String consulta = "SELECT * FROM grupo_viaje WHERE id_grupo = ? and id_viaje = ?";
         

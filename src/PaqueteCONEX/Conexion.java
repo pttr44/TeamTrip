@@ -10,10 +10,10 @@ public class Conexion {
 
     public static Connection getConnection() throws Exception{
         try {
-            
-            String url = envOrDefault("TEAMTRIP_DB_URL", "jdbc:mysql://localhost:3306/teamtrip");
-            String user = envOrDefault("TEAMTRIP_DB_USER", "root");
-            String pwd = envOrDefault("TEAMTRIP_DB_PWD", "mysql");
+
+            String url = "jdbc:mysql://localhost:3306/teamtrip";
+            String user = "root";
+            String pwd = "mysql";
 
             return DriverManager.getConnection(url, user, pwd);
 
@@ -25,10 +25,5 @@ public class Conexion {
     // Alias para mantener compatibilidad con el resto del codigo
     public Connection getConexion() throws Exception {
         return getConnection();
-    }
-
-    private static String envOrDefault(String key, String fallback) {
-        String v = System.getenv(key);
-        return (v == null || v.isBlank()) ? fallback : v;
     }
 }
