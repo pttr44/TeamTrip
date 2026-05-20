@@ -1,42 +1,42 @@
 package PaqueteDAO;
 
 import PaqueteCONEX.Conexion;
-import PaqueteVO.Usuario;
+import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GrupoDAO {
-    public static List<String> listVisibles(int id_grupo) {
-        List<String> lista = new ArrayList<>();
-        String sql = "select nombre FROM grupo where id_grupo = ?";
+    public static void crearGrupo(String nombre){
+        String sql = "insert into grupo (nombre) values (?)";
 
         try (Connection conn = Conexion.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setInt(1, id_grupo);
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    lista.add(rs.getString("nombre"));
-                }
-            }
+            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, nombre);
+                ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return lista;
     }
 
-    public static void añadirUsuario(int id_grupo, Usuario usuario){
-        String sql = "insert into grupo values (?, ?)";
+    public static void eliminarGrupo(int id_grupo){
+        String sql = "delete from grupo where id_grupo = (?)";
 
         try (Connection conn = Conexion.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql)) {
-                try (ResultSet rs = ps.executeQuery()) {
-                    ps.setInt(1, id_grupo);
-                    ps.setString(2, usuario.getNombre_completo());
-                }
+            ps.setInt(1, id_grupo);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void cambiarNombreGrupo(String nombre, int id_grupo){
+        String sql = "update grupo set nombre = (?) where id_grupo = (?)";
+        try (Connection conn = Conexion.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, nombre);
+            ps.setInt(2, id_grupo);
+            ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }

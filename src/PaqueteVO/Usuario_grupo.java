@@ -2,7 +2,7 @@ package PaqueteVO;
 
 public class Usuario_grupo {
     private int id_grupo;
-    private String dni;
+    private String dni; 
     
     public Usuario_grupo(int id_grupo, String dni) {
         this.id_grupo = id_grupo;
