@@ -22,8 +22,11 @@ public class PropuestaControl {
         }
     }
 
-    public static void eliminarPropuesta(int id_Propuesta, Connection conexion) {
+    public static void eliminarPropuesta(int id_Propuesta, Connection conexion, Scanner scan) {
         Connection conec = conexion;
+
+        System.out.println("Dime el id de la propuesta que quieres eliminar: ");
+        id_Propuesta = scan.nextInt();
 
         try {
             PropuestaDAO.eliminarPropuesta(id_Propuesta, conec);
