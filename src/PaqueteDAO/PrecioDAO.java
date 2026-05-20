@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class PrecioDAO {
 
-    public void Precioviaje(Connection conexion, int id_precio, double valor) throws SQLException {
+    public static void Precioviaje(Connection conexion, int id_precio, double valor) throws SQLException {
         if (valor == -1.0 || Double.isNaN(valor)) {
             throw new IllegalArgumentException("El precio está vacío.");
         }
@@ -29,7 +29,7 @@ public class PrecioDAO {
         }
     }
 
-    public boolean nuvoPrecioviaje(Connection conexion, Precio precio) throws SQLException {
+    public static boolean nuvoPrecioviaje(Connection conexion, Precio precio) throws SQLException {
         String actualizar = "UPDATE precio SET valor = ? WHERE id_precio = ?";
 
         try (PreparedStatement ps = conexion.prepareStatement(actualizar)) {
