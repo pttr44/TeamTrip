@@ -4,7 +4,9 @@ import PaqueteCONEX.Conexion;
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 public class GrupoDAO {
     public static void crearGrupo(String nombre){
         String sql = "insert into grupo (nombre) values (?)";
